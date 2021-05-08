@@ -1,0 +1,211 @@
+﻿<!doctype html>
+<html lang="es" dir="ltr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap 4.6.0 CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <!-- Select2 4.1.0-rc.0 -->
+    <link rel="stylesheet" href="css/select2/select2.min.css">
+    <!-- Select2 bootstrap4 theme -->
+    <link rel="stylesheet" href="css/select2/select2-bootstrap4.min.css">
+
+    <!-- Datatables -->
+    <link rel="stylesheet" href="css/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/datatables/responsive.bootstrap4.min.css">
+
+    <title>Prueba de Librerías</title>
+</head>
+
+<body>
+    <main class="container">
+
+        <div class="text-center">
+            <h1 class="mb-3">Mis Librerías</h1>
+            <p>Librerías de uso común en el desarrollo Web, bootstrap, jquery, select2, datatables, entre otras.</p>
+        </div>
+
+        <section>
+            <h2 class="mb-3">Sección 1: tooltip en input</h2>
+
+            <div style="width: 100%;max-width: 370px;margin: auto;padding: 15px;">
+                <form action="">
+                    <div class="mb-3">
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" name="usuario" id="usuario" class="form-control" data-toggle="tooltip"
+                            data-placement="left" title="Ingrese su usuario">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password" id="password" class="form-control" data-toggle="tooltip"
+                            data-placement="left" title="Ingrese su contraseña">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Ingresar</button>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2 class="mb-3">Sección 2: select2</h2>
+            <div class="mb-3">
+                <label for="provincia">Provincia:</label>
+                <select name="provincia" id="provincia" class="custom-select" style="width: 100%;">
+                    <option value="">-- Seleccione una provincia --</option>
+                    <option value="">Mendoza</option>
+                    <option value="">San Luis</option>
+                    <option value="">San Juan</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="localidad">Localidad:</label>
+                <select name="localidad" id="localidad" class="custom-select" style="width: 100%;">
+                    <option value="">-- Seleccione una localidad --</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2 class="mb-3">Sección 3: datatable</h2>
+            <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                        <th>Extn.</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tiger</td>
+                        <td>Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                        <td>5421</td>
+                        <td>t.nixon@datatables.net</td>
+                    </tr>
+                    <tr>
+                        <td>Garrett</td>
+                        <td>Winters</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>63</td>
+                        <td>2011/07/25</td>
+                        <td>$170,750</td>
+                        <td>8422</td>
+                        <td>g.winters@datatables.net</td>
+                    </tr>
+                    <tr>
+                        <td>Ashton</td>
+                        <td>Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009/01/12</td>
+                        <td>$86,000</td>
+                        <td>1562</td>
+                        <td>a.cox@datatables.net</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- jQuery 3.5.1 -->
+    <script src="js/jquery/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Bootstrap bundle 4.6.0 (includes Popper) -->
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- Select2 4.1.0-rc.0 -->
+    <script src="js/select2/select2.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="js/datatables/jquery.dataTables.min.js"></script>
+    <script src="js/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/datatables/dataTables.responsive.min.js"></script>
+    <script src="js/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectLocalidad = document.querySelector("select#localidad");
+            // En la carga del DOM desabilitamos el select de localidad
+            // if (selectLocalidad) { selectLocalidad.disabled = true; }
+        });
+
+        // Activar tooltip en los input tipo text, auto ejecutable
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+        $(document).ready(function () {
+            initDataTable();
+            initSelect2();
+        });
+
+        function initSelect2() {
+            $('#provincia').select2({
+                width: 'resolve',
+                theme: "bootstrap4",
+                language: { noResults: function () { return "No se encontraron resultados"; } }
+            });
+
+            $('#localidad').select2({
+                width: 'resolve',
+                theme: "bootstrap4",
+                minimumInputLength: 3,
+                language: {
+                    inputTooShort: function (e) {
+                        var n = e.minimum - e.input.length, r = "Por favor, introduzca " + n + " car"; return r += 1 == n ? "ácter" : "acteres";
+                    },
+                    noResults: function () { return "No se encontraron resultados"; }
+                }
+            });
+        }
+
+        function initDataTable() {
+            $('#datatable').DataTable({
+                // "order": [[ 0, "desc" ]],
+                // "pagingType": "full_numbers",
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontró nada, lo siento",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "",
+                    "sSearchPlaceholder": 'Buscar...',
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sPrevious": "Anterior",
+                        "sNext": "Siguiente",
+                        "sLast": "Último"
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
